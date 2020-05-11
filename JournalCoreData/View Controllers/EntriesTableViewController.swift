@@ -13,10 +13,11 @@ class EntriesTableViewController: UITableViewController, NSFetchedResultsControl
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        entryController.fetchEntriesFromServer() { _ in
-            DispatchQueue.main.async {
+        entryController.fetchEntriesFromServer() { error in
+            if error == nil {
                 self.tableView.reloadData()
             }
+            // TODO: Alert user
         }
     }
     
