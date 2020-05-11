@@ -113,6 +113,7 @@ class EntryController {
             do {
                 let entryReps = try JSONDecoder().decode([String: EntryRepresentation].self, from: data).map({$0.value})
                 self.updateEntries(with: entryReps, in: moc)
+                completion(nil)
             } catch {
                 NSLog("Error decoding JSON data: \(error)")
                 completion(error)
